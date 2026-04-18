@@ -1,1 +1,26 @@
 # ShortestPathAlgorithm_GUI
+
+This project implements and compares the following shortest path algorithms from scratch:
+- Breadth-First Search (BFS) for unweighted graphs
+- Dijkstra's Algorithm for weighted graphs with nonnegative edges
+- Bellman-Ford Algorithm for weighted graphs with possible negative edges
+
+## Features
+- Custom adjacency-list graph structures
+- Custom binary min-heap for Dijkstra
+- Negative cycle detection in Bellman-Ford
+- Bellman-Ford early-stop optimization
+- Path reconstruction support
+- Random graph generation for testing and benchmarking
+
+## Files
+- `graph.py` — graph data structures and random graph generation
+- `heap.py` — custom binary min-heap
+- `algorithms.py` — BFS, Dijkstra, Bellman-Ford, path reconstruction
+- `utils.py` — formatting helpers
+- `main.py` — example runs for correctness testing
+
+## How to Run
+```bash
+cd src
+python main.py
