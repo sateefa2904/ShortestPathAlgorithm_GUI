@@ -24,6 +24,7 @@ This project implements and compares the following shortest path algorithms from
 ```bash
 cd src
 python main.py
+```
 
 ## Why this code is strong
 - Everything important is written from scratch
