@@ -28,7 +28,7 @@ class Graph:
         self._validate_vertex(u)
         return self.adj_list[u]
     def edge_count(self) -> int:
-        total = sum(len(self.neighbors) for neighbors in self.adj_list)
+        total = sum(len(neighbors) for neighbors in self.adj_list)
         return total if self.directed else total//2
     def _validate_vertex(self, vertex: int) -> None:
         if vertex < 0 or vertex >= self.num_vertices:
@@ -66,6 +66,11 @@ class WeightedGraph:
     Each adjacency list entry is a tuple (neighbor, weight).
     """
     def __init__(self, num_vertices: int, directed: bool = False) -> None:
+        if num_vertices <= 0:
+            raise ValueError("Number of vertices must be positive.")
+
+        self.num_vertices = num_vertices
+        self.directed = directed
         self.adj_list: List[List[Tuple[int, float]]] = [[] for _ in range(num_vertices)]
 
     def add_edge(self, u: int, v: int, weight: float) -> None:

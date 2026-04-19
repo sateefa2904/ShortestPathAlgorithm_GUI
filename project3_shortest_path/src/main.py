@@ -110,8 +110,8 @@ def main() -> None:
     demo_bellman_ford()
     demo_negative_cycle()
 
-    print("\nProject 3 core shortest path algorithms are working.")
-    print("Next steps: benchmarking engine + GUI.")
+    print("\nProject 3 core shortest path algorithms complete.")
+    print("Run benchmark.py to benchmark the engine + GUI.")
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import deque
 from math import inf
-from typing import Dic, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from graph import Graph, WeightedGraph
 from heap import MinHeap
@@ -54,16 +54,16 @@ def bfs_shortest_path(graph: Graph, source: int) -> Tuple[List[float], List[Opti
     return distance, parent
 
 def dijkstra(graph: WeightedGraph, source: int) -> Tuple[List[float], List[Optional[int]]]:
-    if source < 0 or source >= graph.num_vertices:
+    if source < 0 or source >= graph.num_vertices: # type: ignore
         raise ValueError("Invalid source vertex.")
     if graph.has_negative_weight():
         raise DijkstraNegativeWeightError(
             "Dijkstra's algorithm cannot be used safely with negative edge weights."
         )
 
-    distance = [inf] * graph.num_vertices
-    parent: List[Optional[int]] = [None] * graph.num_vertices
-    visited = [False] * graph.num_vertices
+    distance = [inf] * graph.num_vertices # pyright: ignore[reportAttributeAccessIssue]
+    parent: List[Optional[int]] = [None] * graph.num_vertices # pyright: ignore[reportAttributeAccessIssue]
+    visited = [False] * graph.num_vertices # pyright: ignore[reportAttributeAccessIssue]
 
     distance[source] = 0
     heap = MinHeap()
@@ -93,19 +93,19 @@ def bellman_ford(
     source: int,
     early_stop: bool = True,
 ) -> Tuple[List[float], List[Optional[int]]]:
-    if source < 0 or source >= graph.num_vertices:
+    if source < 0 or source >= graph.num_vertices: # type: ignore
         raise ValueError("Invalid source vertex.")
 
-    distance = [inf] * graph.num_vertices
-    parent: List[Optional[int]] = [None] * graph.num_vertices
+    distance = [inf] * graph.num_vertices # type: ignore
+    parent: List[Optional[int]] = [None] * graph.num_vertices # pyright: ignore[reportAttributeAccessIssue]
     distance[source] = 0
 
     edges = []
-    for u in range(graph.num_vertices):
+    for u in range(graph.num_vertices): # type: ignore
         for v, w in graph.neighbors(u):
             edges.append((u, v, w))
 
-    for i in range(graph.num_vertices - 1):
+    for i in range(graph.num_vertices - 1): # pyright: ignore[reportAttributeAccessIssue]
         updated = False
         for u, v, w in edges:
             if distance[u] != inf and distance[u] + w < distance[v]:
