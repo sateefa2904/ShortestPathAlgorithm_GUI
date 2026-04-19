@@ -25,19 +25,3 @@ This project implements and compares the following shortest path algorithms from
 cd src
 python main.py
 ```
-
-## Why this code is strong
-- Everything important is written from scratch
-- The structure is clean enough for the TA to inspect easily
-- Bellman-Ford includes a real optimization: early stopping
-- Dijkstra uses a custom binary min-heap instead of a built-in priority queue
-- Path reconstruction is already built in, which will help both the demo and GUI
-
-## What to build next
-The next files we should write are:
-1. `benchmark.py`
-2. `gui.py`
-3. optional sample input file loader
-4. charts/export support for the report
-
-That order is best because it gives you experimental results early while the GUI is being polished.
