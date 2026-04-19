@@ -368,7 +368,7 @@ class ShortestPathApp:
             allow_negative = self.allow_negative_var.get()
 
             runner = GuiBenchmarkRunner(trials_per_size=3)
-            sizes = [num_vertices]
+            sizes = [10, 50, 100, 200]
             comparison_lines: List[str] = []
 
             comparison_lines.append("=== Algorithm Comparison ===")
@@ -379,14 +379,14 @@ class ShortestPathApp:
             bfs_results = runner.benchmark_bfs(sizes, edge_probability=edge_probability)
             for result in bfs_results:
                 comparison_lines.append(
-                    f"BFS           -> Avg Runtime: {result.average_runtime_ms:.4f} ms"
+                    f"BFS (n={result.num_vertices}) -> {result.average_runtime_ms:.4f} ms"
                 )
 
             if not allow_negative:
                 dijkstra_results = runner.benchmark_dijkstra(sizes, edge_probability=edge_probability)
                 for result in dijkstra_results:
                     comparison_lines.append(
-                        f"Dijkstra      -> Avg Runtime: {result.average_runtime_ms:.4f} ms"
+                        f"Dijkstra (n={result.num_vertices}) -> {result.average_runtime_ms:.4f} ms"
                     )
 
             bellman_results = runner.benchmark_bellman_ford(
@@ -398,7 +398,7 @@ class ShortestPathApp:
             for result in bellman_results:
                 extra = f" | {result.notes}" if result.notes else ""
                 comparison_lines.append(
-                    f"Bellman-Ford  -> Avg Runtime: {result.average_runtime_ms:.4f} ms{extra}"
+                    f"Bellman-Ford (n={result.num_vertices}) -> {result.average_runtime_ms:.4f} ms"
                 )
 
             comparison_lines.append("")
